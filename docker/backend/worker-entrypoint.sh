@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#echo "Executing worker-entrypoint.sh"
+echo "Executing worker-entrypoint.sh"
 
 until cd /app/backend
 do

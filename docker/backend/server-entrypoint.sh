@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#echo "Executing server-entrypoint.sh"
+echo "Executing server-entrypoint.sh"
 
 until cd /app/backend
 do
