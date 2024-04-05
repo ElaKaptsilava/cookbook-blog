@@ -1,4 +1,11 @@
-Django~=5.0.4
-djangorestframework
+django
 
+djangorestframework
+markdown
+django-filter
+
+celery[redis]
+
+psycopg2-binary
 Pillow
+sentry-sdk[django]
