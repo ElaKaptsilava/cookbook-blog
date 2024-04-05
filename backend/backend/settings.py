@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "users.apps.UsersConfig",
+    "recipes_manager.apps.RecipesManagerConfig",
+    "nutrition",
 ]
 
 MIDDLEWARE = [
