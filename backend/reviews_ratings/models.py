@@ -1,12 +1,12 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 from users.models import CustomUser
 
 
 def user_directory_path(instance, filename):
     user_email = instance.user.email if instance.user else 'unknown_user'
-    return f"user_{user_email}/reviews/{filename}"
+    return f"user_{user_email}/ratings/{filename}"
 
 
 class Review(models.Model):
@@ -27,7 +27,15 @@ class AbstractReview(Review):
 
 
 class Rating(AbstractReview):
-    rate = models.PositiveIntegerField()
+    RATE_CHOICES = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    )
+    rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES,
+                                            validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def __str__(self):
         return f"Rating for {self.recipe.title} by {self.user.username}"
