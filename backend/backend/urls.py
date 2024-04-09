@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from recipes_manager.api import router as recipes_manager_router
 from nutrition.api import router as nutrition_router
-
+from reviews_ratings.api import router as reviews_rating_router
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -36,4 +36,12 @@ urlpatterns = [
             namespace="nutrition",
         ),
     ),
+    path(
+        "reviews-ratings/",
+        include(
+            (reviews_rating_router.urls, "reviews-ratings"),
+            namespace="reviews-ratings"
+        )
+    )
+
 ]
