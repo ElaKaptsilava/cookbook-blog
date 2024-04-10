@@ -6,6 +6,7 @@ app_name = "recipes-manager"
 
 router = DefaultRouter()
 router.register(r"categories", views.CategoryViewSet, basename="categories")
+router.register(r"instruction", views.InstructionViewSet, basename="instruction")
 router.register(r"recipes", views.RecipeViewSet, basename="recipes")
 router.register(
     r"ingredients-recipes",

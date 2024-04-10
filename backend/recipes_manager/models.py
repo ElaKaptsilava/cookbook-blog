@@ -62,3 +62,16 @@ class IngredientRecipe(models.Model):
 
     def __repr__(self):
         return f"IngredientRecipe(pk={repr(self.pk)}, title={repr(self.title)}, quantity={repr(self.quantity)})"
+
+
+class Instruction(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    number = models.IntegerField()
+    description = models.TextField()
+    file = models.FileField(upload_to=user_directory_path, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.description[:20]}...'
+
+    def __repr__(self):
+        return f"Instruction(pk={repr(self.pk)}, recipe={repr(self.recipe)}, description={repr(f'{self.description[:20]}...')})"
