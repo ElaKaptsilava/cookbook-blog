@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "recipes_manager.apps.RecipesManagerConfig",
     "nutrition",
+    "reviews_ratings"
 ]
 
 MIDDLEWARE = [
