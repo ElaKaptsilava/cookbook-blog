@@ -1,10 +1,11 @@
 from rest_framework import viewsets
 
-from .models import Recipe, Category, IngredientRecipe
+from .models import Recipe, Category, IngredientRecipe, Instruction
 from .serializers import (
     RecipeSerializer,
     CategorySerializer,
     IngredientRecipeSerializer,
+    InstructionSerializer
 )
 
 
@@ -21,3 +22,8 @@ class CategoryViewSet(viewsets.ModelViewSet):
 class IngredientRecipeViewSet(viewsets.ModelViewSet):
     queryset = IngredientRecipe.objects.all()
     serializer_class = IngredientRecipeSerializer
+
+
+class InstructionViewSet(viewsets.ModelViewSet):
+    queryset = Instruction.objects.all()
+    serializer_class = InstructionSerializer

@@ -12,3 +12,9 @@ class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
         fields = '__all__'
+
+
+class CommunityOpinionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CommunityOpinion
+        fields = '__all__'

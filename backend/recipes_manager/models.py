@@ -27,6 +27,7 @@ class Recipe(models.Model):
     cooking_time = models.IntegerField(default=0)
     title = models.CharField(max_length=256)
     image = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
+    file = models.FileField(upload_to=user_directory_path, blank=True, null=True)
     description = models.TextField()
     ingredients = models.ManyToManyField(Ingredient, through="IngredientRecipe")
     published_date = models.DateTimeField(auto_now_add=True)
@@ -62,3 +63,16 @@ class IngredientRecipe(models.Model):
 
     def __repr__(self):
         return f"IngredientRecipe(pk={repr(self.pk)}, title={repr(self.title)}, quantity={repr(self.quantity)})"
+
+
+class Instruction(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    number = models.IntegerField()
+    description = models.TextField()
+    file = models.FileField(upload_to=user_directory_path, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.description[:20]}...'
+
+    def __repr__(self):
+        return f"Instruction(pk={repr(self.pk)}, recipe={repr(self.recipe)}, description={repr(f'{self.description[:20]}...')})"
