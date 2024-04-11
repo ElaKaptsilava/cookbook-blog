@@ -50,4 +50,4 @@ class ChefProfile(models.Model):
     url = models.URLField(blank=True, null=True)
 
     def __str__(self):
-        return f"Recipe Developer: {self.user.username}"
+        return f"Chef: {self.user.username}"
