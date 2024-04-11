@@ -27,6 +27,7 @@ class Recipe(models.Model):
     cooking_time = models.IntegerField(default=0)
     title = models.CharField(max_length=256)
     image = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
+    file = models.FileField(upload_to=user_directory_path, blank=True, null=True)
     description = models.TextField()
     ingredients = models.ManyToManyField(Ingredient, through="IngredientRecipe")
     published_date = models.DateTimeField(auto_now_add=True)
