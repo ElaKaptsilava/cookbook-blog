@@ -39,3 +39,15 @@ class CustomUser(AbstractUser):
 
     def __repr__(self):
         return f'CustomUser(email="{self.email}")'
+
+
+class ChefProfile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    bio = models.TextField(blank=True)
+    profile_picture = models.ImageField(upload_to=user_directory_path, blank=True)
+    image = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
+    files = models.FileField(upload_to=user_directory_path, blank=True, null=True)
+    url = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Chef: {self.user.username}"
