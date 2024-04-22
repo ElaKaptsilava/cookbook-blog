@@ -4,7 +4,7 @@ from users.models import CustomUser
 from recipes_manager.models import Recipe
 
 
-def user_directory_path(instance, filename):
+def user_directory_path(instance, filename: str):
     user_email = instance.user.email if instance.user else 'unknown_user'
     return f"user_{user_email}/ratings/{filename}"
 
@@ -36,10 +36,10 @@ class Rating(AbstractReview):
     class Meta:
         unique_together = ('recipe', 'custom_user')
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Rating for {self.recipe.title} by {self.custom_user.username}"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (f"Rating(pk={repr(self.pk)}, recipe={repr(self.recipe.title)}, user={repr(self.custom_user.username)}, "
                 f"rate={repr(self.rate)})")
 
@@ -55,8 +55,8 @@ class CommunityOpinion(models.Model):
     class Meta:
         unique_together = ('email', 'recipe')
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Opinion for by {self.email}'
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f'CommunityOpinion(email={self.email!r}'
